@@ -12,18 +12,19 @@ Tested:     10/11/20
 ******************************************************************************/
 
 // List all cars
-$queryAllCars = 'SELECT * FROM cars
+$queryAllCars = 'SELECT * FROM cars 
                  ORDER BY car_id';
-$db_list_process = $db->prepare($queryAllCars);
-$db_list_process->execute();
-$cars = $db_list_process->fetchAll();
-$db_list_process->closeCursor();
+$db_list_process = $db -> prepare($queryAllCars);
+$db_list_process -> execute();
+$cars = $db_list_process -> fetchAll();
+var_dump($cars);
+$db_list_process -> closeCursor();
 
 // Delete Record Function
 function deleteTableRecord($deleted_record) {
     if ($car_id != false) {
         $deleteRecord = 'DELETE FROM cars
-                        WHERE car_id = :deleted_record';
+                         WHERE car_id = :deleted_record';
         $db_delete_process = $db->prepare($deleteRecord);
         $db_delete_process->bindValue(':deleted_record', $car_id);
         $success = $db_delete_process->execute();
