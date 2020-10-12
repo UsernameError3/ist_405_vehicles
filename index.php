@@ -13,7 +13,7 @@ Tested:     10/11/20
 
 // List all cars
 $queryAllCars = 'SELECT * FROM cars 
-                 ORDER BY car_id';
+                 ORDER BY car_id;';
 $db_list_process = $db -> prepare($queryAllCars);
 $db_list_process -> execute();
 $cars = $db_list_process -> fetchAll();
