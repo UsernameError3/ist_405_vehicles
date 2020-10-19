@@ -1,4 +1,5 @@
 <?php
+require_once('db_conn.php');
 
 /*****************************************************************************
 Title:  	Arrays and Custom Functions
@@ -29,8 +30,6 @@ function addCar() {
             include('db_error.php');
 
     } else {
-        require_once('db_conn.php');
-
 
         $db_add_process->exec('INSERT INTO cars(car_make, car_model, car_color, car_year, car_price) VALUES (?, ?, ?, ?, ?)');
         $db_add_process->bindParam(1, $car_make);
@@ -60,7 +59,7 @@ function addCar() {
         $db_add_process->closeCursor();
         */
 
-        header("Location: index.php");
+        echo "<script>window.location.href='index.php';</script>";
         exit;
     }
 }
