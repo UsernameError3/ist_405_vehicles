@@ -26,12 +26,7 @@ if ( isset($_POST['delete']) ) {
 function deleteCar($car_id) {
 
     // Validate inputs
-    if ( $car_id == null || $car_id == false || 
-        $car_make == null || $car_make == false || 
-        $car_model == null || $car_model == false || 
-        $car_color == null || $car_color == false || 
-        $car_year == null || $car_year == false || 
-        $car_price == null || $car_price == false) {
+    if ($car_id == null || $car_id == false) {
             $error_message = "Invalid car data. Check all fields and try again.";
             include('db_error.php');
 
