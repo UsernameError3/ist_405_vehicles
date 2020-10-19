@@ -10,6 +10,10 @@ Developed:  10/11/20
 Tested:     10/11/20
 ******************************************************************************/
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Display Car Record On Index Edit Button Form Submit
 if ( isset($_POST['edit']) ) {
     $editCarID = filter_input(INPUT_POST, 'car_id', FILTER_VALIDATE_INT);
@@ -21,7 +25,7 @@ if ( isset($_POST['edit']) ) {
     $db_list_process = $db->prepare($queryCar);
     $db_list_process->bindValue(':editCarID', $editCarID);
     $db_list_process->execute();
-    $car = $db_list_process->fetchAll();
+    $car = $db_list_process->fetch();
     $db_list_process->closeCursor();
 
 }

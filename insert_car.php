@@ -10,9 +10,11 @@ Developed:  10/11/20
 Tested:     10/11/20
 ******************************************************************************/
 
+/*
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+*/
 
 // Delete Record On Form Submit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
