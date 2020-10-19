@@ -19,7 +19,7 @@ if ( isset($_POST['edit']) ) {
                  WHERE car_id = :editCarID';
 
     $db_list_process = $db->prepare($queryCar);
-    $db_list_process->bindValue(':editCarID', $car_id);
+    $db_list_process->bindValue(':editCarID', $editCarID);
     $db_list_process->execute();
     $car = $db_list_process->fetchAll();
     $db_list_process->closeCursor();
