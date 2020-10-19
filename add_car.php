@@ -61,8 +61,8 @@ function addCar() {
 
     }
 
-    echo "<script>window.location.href='index.php';</script>";
-    exit;
+    ob_start();
+    header('Location: index.php');
 }
 
 ?>
