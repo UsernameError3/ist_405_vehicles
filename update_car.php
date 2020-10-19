@@ -10,9 +10,11 @@ Developed:  10/11/20
 Tested:     10/11/20
 ******************************************************************************/
 
+/*
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+*/
 
 // Edit Record On Form Submit
 if ( isset($_POST['edited']) ) {
@@ -42,7 +44,7 @@ function updateCar($car_id, $car_make, $car_model, $car_color, $car_year, $car_p
     } else {
         include('db_conn.php');
         // Add car to the database  
-        $queryAddCar = 'UPDATE cars 
+        $queryEditCar = 'UPDATE cars 
                         SET
                         car_make = :car_make,
                         car_model = :car_model,
@@ -52,7 +54,7 @@ function updateCar($car_id, $car_make, $car_model, $car_color, $car_year, $car_p
                         WHERE
                         car_id = :car_id';
 
-        $db_edit_process = $db->prepare($queryAddCar);
+        $db_edit_process = $db->prepare($queryEditCar);
         $db_edit_process->bindValue(':car_id', $car_id);
         $db_edit_process->bindValue(':car_make', $car_make);
         $db_edit_process->bindValue(':car_model', $car_model);
