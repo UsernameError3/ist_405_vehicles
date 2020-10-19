@@ -32,9 +32,9 @@ function addCar() {
 
         // Add car to the database  
         $queryAddCar = 'INSERT INTO cars 
-                            (car_make, car_model, car_color, car_year, car_price)
+                            (,car_make, car_model, car_color, car_year, car_price)
                         VALUES 
-                            (:car_make, :car_model, :car_color, :car_year, :car_price)';
+                            (,:car_make, :car_model, :car_color, :car_year, :car_price)';
 
         $db_add_process = $db->prepare($queryAddCar);
         $db_add_process->bindValue(':car_make', $car_make);
