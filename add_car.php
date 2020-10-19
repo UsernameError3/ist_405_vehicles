@@ -46,7 +46,7 @@ function addCar() {
         $db_add_process->closeCursor();
 
         header("Location: index.php");
-
+    }
 }
 
 ?>
