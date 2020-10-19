@@ -1,5 +1,5 @@
 <?php
-
+include('db_conn.php');
 /*****************************************************************************
 Title:  	Arrays and Custom Functions
 Use:     	To demonstrate using databases with PHP & SQL.
