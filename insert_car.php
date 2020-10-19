@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $posted_car_year = filter_input(INPUT_POST, 'car_Year', FILTER_VALIDATE_INT);
     $posted_car_price = filter_input(INPUT_POST, 'car_Price', FILTER_VALIDATE_FLOAT);
 
-    //addCar($posted_car_make, $posted_car_model, $posted_car_color, $posted_car_year, $posted_car_price);
+    addCar($posted_car_make, $posted_car_model, $posted_car_color, $posted_car_year, $posted_car_price);
     
 }
 
@@ -51,10 +51,8 @@ function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
 
         
         // Add car to the database  
-        $queryAddCar = 'INSERT INTO cars 
-                            (car_make, car_model, car_color, car_year, car_price)
-                        VALUES 
-                            (:car_make, :car_model, :car_color, :car_year, :car_price)';
+        $queryAddCar = 'INSERT INTO cars (car_make, car_model, car_color, car_year, car_price)
+                        VALUES (:car_make, :car_model, :car_color, :car_year, :car_price)';
 
         $db_add_process = $db->prepare($queryAddCar);
         $db_add_process->bindValue(':car_make', $car_make);
@@ -62,10 +60,9 @@ function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
         $db_add_process->bindValue(':car_color', $car_color);
         $db_add_process->bindValue(':car_year', $car_year);
         $db_add_process->bindValue(':car_price', $car_price);
-        $db_add_process->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // $db_add_process->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $db_add_process->execute();
         $db_add_process->closeCursor();
-        
 
     }
 
@@ -86,10 +83,7 @@ function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
 
 <body>
     <span><?php echo("Var Test: " . $posted_car_make);?></span><br>
-    <span><?php echo("Var Test: " . $posted_car_model);?></span><br>
-    <span><?php echo("Var Test: " . $posted_car_color);?></span><br>
-    <span><?php echo("Var Test: " . $posted_car_year);?></span><br>
-    <span><?php echo("Var Test: " . $posted_car_price);?></span><br>
+
 </body>
 
 </html>
