@@ -22,7 +22,7 @@ if ( isset($_POST['add']) ) {
     $posted_car_price = filter_input(INPUT_POST, 'car_Price', FILTER_VALIDATE_FLOAT);
 
     addCar($posted_car_make, $posted_car_model, $posted_car_color, $posted_car_year, $posted_car_price);
-    header('Location: index.php');
+    
 }
 
 function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
@@ -68,6 +68,7 @@ function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
 
     }
 
+    header('Location: index.php');
 }
 
 ?>
