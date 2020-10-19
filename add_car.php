@@ -31,6 +31,19 @@ function addCar() {
     } else {
         require_once('db_conn.php');
 
+
+        $db_add_process->exec('INSERT INTO cars(car_make, car_model, car_color, car_year, car_price) VALUES (?, ?, ?, ?, ?)');
+        $db_add_process->bindParam(1, $car_make);
+        $db_add_process->bindParam(1, $car_model);
+        $db_add_process->bindParam(1, $car_color);
+        $db_add_process->bindParam(1, $car_year);
+        $db_add_process->bindParam(1, $car_price);
+
+        $db_add_process->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
+        $db_add_process->execute();
+        $db_add_process->closeCursor();  
+
+        /*
         // Add car to the database  
         $queryAddCar = 'INSERT INTO cars 
                             (car_make, car_model, car_color, car_year, car_price)
@@ -45,8 +58,9 @@ function addCar() {
         $db_add_process->bindValue(':car_price', $car_price);
         $db_add_process->execute();
         $db_add_process->closeCursor();
+        */
 
-        header("Location: /index.php");
+        header("Location: index.php");
         exit;
     }
 }
