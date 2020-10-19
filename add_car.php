@@ -27,14 +27,15 @@ function addCar() {
         $car_price == null || $car_price == false) {
             $error_message = "Invalid car data. Check all fields and try again.";
             include('db_error.php');
+
     } else {
         require_once('db_conn.php');
 
         // Add car to the database  
         $queryAddCar = 'INSERT INTO cars 
-                            (car_id, car_make, car_model, car_color, car_year, car_price)
+                            (car_make, car_model, car_color, car_year, car_price)
                         VALUES 
-                            (NULL, :car_make, :car_model, :car_color, :car_year, :car_price)';
+                            (:car_make, :car_model, :car_color, :car_year, :car_price)';
 
         $db_add_process = $db->prepare($queryAddCar);
         $db_add_process->bindValue(':car_make', $car_make);
@@ -45,7 +46,8 @@ function addCar() {
         $db_add_process->execute();
         $db_add_process->closeCursor();
 
-        header("Location: index.php");
+        header("Location: /index.php");
+        exit;
     }
 }
 
