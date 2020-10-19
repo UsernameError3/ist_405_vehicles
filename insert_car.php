@@ -27,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
 
+    $test = 'function is executed.';
     // Validate inputs
     if ($car_make == null || $car_make == false || 
         $car_model == null || $car_model == false || 
