@@ -35,7 +35,7 @@ function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
         $car_price == null || $car_price == false) {
             $error_message = "Invalid car data. Check all fields and try again.";
             include('db_error.php');
-
+        $test = 'If is executed.';
     } else {
 
         $test = 'Else is executed.';
@@ -67,7 +67,7 @@ function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
         */
     }
 
-    // header('Location: index.php');
+    header('Location: index.php');
 }
 
 ?>
@@ -79,6 +79,7 @@ function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="shortcut icon" href="">
     <title>Car Manager</title>
 </head>
 
