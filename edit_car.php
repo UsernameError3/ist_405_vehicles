@@ -1,5 +1,5 @@
 <?php
-
+include('db_conn.php');
 /*****************************************************************************
 Title:  	Arrays and Custom Functions
 Use:     	To demonstrate using databases with PHP & SQL.
@@ -16,7 +16,7 @@ if ( isset($_POST['edit']) ) {
 
     // List Car Fields From Edit Button Input (car_id)
     $queryCar = 'SELECT * FROM cars
-    WHERE car_id = :editCarID';
+                 WHERE car_id = :editCarID';
 
     $db_list_process = $db->prepare($queryCar);
     $db_list_process->bindValue(':editCarID', $car_id);
@@ -46,7 +46,6 @@ if ( isset($_POST['edited']) ) {
             include('db_error.php');
 
     } else {
-        require_once('db_conn.php');
 
         // Add car to the database  
         $queryAddCar = 'UPDATE cars 
