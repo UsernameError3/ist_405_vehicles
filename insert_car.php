@@ -30,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
 
-    $test = 'function is executed.';
     // Validate inputs
     if ($car_make == null || $car_make == false || 
         $car_model == null || $car_model == false || 
@@ -39,10 +38,10 @@ function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
         $car_price == null || $car_price == false) {
             $error_message = "Invalid car data. Check all fields and try again.";
             include('db_error.php');
-        $test = 'If is executed.';
+        
     } else {
 
-        $test = 'Else is executed.';
+
         // $db_add_process->exec('INSERT INTO cars(car_make, car_model, car_color, car_year, car_price) VALUES (?, ?, ?, ?, ?)');
         // $db_add_process->bindParam(1, $car_make);
         // $db_add_process->bindParam(1, $car_model);
@@ -54,7 +53,7 @@ function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
         // $db_add_process->execute();
         // $db_add_process->closeCursor();  
 
-        /*
+        
         // Add car to the database  
         $queryAddCar = 'INSERT INTO cars (car_make, car_model, car_color, car_year, car_price)
                         VALUES (:car_make, :car_model, :car_color, :car_year, :car_price)';
@@ -68,28 +67,10 @@ function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
         // $db_add_process->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $db_add_process->execute();
         $db_add_process->closeCursor();
-        */
+        
     }
 
     // header('Location: index.php');
 }
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="main.css">
-    <link rel="shortcut icon" href="">
-    <title>Car Manager</title>
-</head>
-
-<body>
-    <span><?php echo("Var Test: " . $test);?></span><br>
-
-</body>
-
-</html>
