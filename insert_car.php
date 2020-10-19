@@ -67,7 +67,7 @@ function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
         */
     }
 
-    header('Location: index.php');
+    // header('Location: index.php');
 }
 
 ?>
