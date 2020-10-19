@@ -77,7 +77,7 @@ function deleteTableRecord($deleted_record) {
         $db_delete_process->closeCursor();
     }
 
-    header("Refresh:0");
+    // header("Refresh:0");
 };
 
 // Delete Record On Form Submit
