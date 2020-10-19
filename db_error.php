@@ -6,8 +6,8 @@ Use:     	To demonstrate using databases with PHP & SQL.
 Author:  	Alex Fleming
 School:  	Southern Illinois University
 Term:    	Fall 2019
-Developed:  10/11/20
-Tested:     10/11/20
+Developed:  10/18/20
+Tested:     10/18/20
 ******************************************************************************/
 
 ?>

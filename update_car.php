@@ -43,26 +43,22 @@ function updateCar($car_id, $car_make, $car_model, $car_color, $car_year, $car_p
 
     } else {
         include('db_conn.php');
-        // Add car to the database  
-        $queryEditCar = 'UPDATE cars 
-                        SET
-                        car_make = :car_make,
-                        car_model = :car_model,
-                        car_color = :car_color,
-                        car_year = :car_year,
-                        car_price = :car_price
-                        WHERE
-                        car_id = :car_id';
 
-        $db_edit_process = $db->prepare($queryEditCar);
-        $db_edit_process->bindValue(':car_id', $car_id);
-        $db_edit_process->bindValue(':car_make', $car_make);
-        $db_edit_process->bindValue(':car_model', $car_model);
-        $db_edit_process->bindValue(':car_color', $car_color);
-        $db_edit_process->bindValue(':car_year', $car_year);
-        $db_edit_process->bindValue(':car_price', $car_price);
-        $success = $db_edit_process->execute();
-        $db_edit_process->closeCursor();
+        // Update car in the database  
+        $queryEditCar = 'UPDATE cars 
+                         SET
+                         car_make = ?,
+                         car_model = ?,
+                         car_color = ?,
+                         car_year = ?,
+                         car_price = ?
+                         WHERE car_id = ?';
+
+        $db_list_process = mysqli_prepare($db, $queryEditCar);
+        mysqli_stmt_bind_param($db_list_process, "sssidi", $car_make, $car_model, $car_color, $car_year, $car_price, $car_id);
+        mysqli_stmt_execute($db_list_process);
+        mysqli_stmt_close($db_list_process);
+        mysqli_close($db);
 
         // Go Back to The Car List
         header('Location: index.php');

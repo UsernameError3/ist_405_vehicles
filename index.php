@@ -11,20 +11,21 @@ Developed:  10/11/20
 Tested:     10/11/20
 ******************************************************************************/
 
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
-
 // List all cars
 $queryAllCars = 'SELECT * FROM cars 
                  ORDER BY car_id';
-$db_list_process = $db -> prepare($queryAllCars);
-$db_list_process -> execute();
-$cars = $db_list_process -> fetchAll();
-$db_list_process -> closeCursor();
+$db_list_process = mysqli_prepare($db, $queryAllCars);
+// mysqli_stmt_bind_param($stmt, "s", $city);
+mysqli_stmt_execute($db_list_process);
+mysqli_stmt_bind_result($db_list_process, $cars);
+mysqli_stmt_fetch($db_list_process);
+mysqli_stmt_close($db_list_process);
+mysqli_close($db);
+
 
 ?>
 

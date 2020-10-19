@@ -10,11 +10,11 @@ Developed:  10/11/20
 Tested:     10/11/20
 ******************************************************************************/
 
-/*
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-*/
+
 
 // Delete Record On Form Submit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -45,18 +45,15 @@ function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
 
         // Add car to the database  
         $queryAddCar = 'INSERT INTO cars (car_make, car_model, car_color, car_year, car_price)
-                        VALUES (:car_make, :car_model, :car_color, :car_year, :car_price)';
+                        VALUES (?, ?, ?, ?, ?)';
 
-        $db_add_process = $db->prepare($queryAddCar);
-        $db_add_process->bindValue(':car_make', $car_make);
-        $db_add_process->bindValue(':car_model', $car_model);
-        $db_add_process->bindValue(':car_color', $car_color);
-        $db_add_process->bindValue(':car_year', $car_year);
-        $db_add_process->bindValue(':car_price', $car_price);
-        // $db_add_process->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $db_add_process->execute();
-        $db_add_process->closeCursor();
-        
+        $db_list_process = mysqli_prepare($db, $queryAddCar);
+        mysqli_stmt_bind_param($db_list_process, "sssid", $car_make, $car_model, $car_color, $car_year, $car_price);
+        mysqli_stmt_execute($db_list_process);
+        mysqli_stmt_close($db_list_process);
+        mysqli_close($db);
+
+
         header('Location: index.php');
     }
 

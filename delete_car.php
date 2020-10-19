@@ -33,13 +33,15 @@ function deleteCar($car_id) {
     } else {
         include('db_conn.php');
 
+        // Delete car in the database  
         $queryDeleteCar = 'DELETE FROM cars
-                           WHERE car_id = :car_id';
+                           WHERE car_id = ?';
 
-        $db_delete_process = $db->prepare($queryDeleteCar);
-        $db_delete_process->bindValue(':car_id', $car_id);
-        $success = $db_delete_process->execute();
-        $db_delete_process->closeCursor();
+        $db_list_process = mysqli_prepare($db, $queryDeleteCar);
+        mysqli_stmt_bind_param($db_list_process, "i", $car_id);
+        mysqli_stmt_execute($db_list_process);
+        mysqli_stmt_close($db_list_process);
+        mysqli_close($db);
 
         // Go Back to The Car List
         header('Location: index.php');

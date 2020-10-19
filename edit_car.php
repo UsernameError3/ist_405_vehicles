@@ -16,17 +16,18 @@ error_reporting(E_ALL);
 
 // Display Car Record On Index Edit Button Form Submit
 if ( isset($_POST['edit']) ) {
-    $editCarID = filter_input(INPUT_POST, 'car_id', FILTER_VALIDATE_INT);
 
     // List Car Fields From Edit Button Input (car_id)
     $queryCar = 'SELECT * FROM cars
                  WHERE car_id = :editCarID';
+    $db_list_process = mysqli_prepare($db, $queryCar);
+    mysqli_stmt_bind_param($db_list_process, "s", $editCarID);
+    mysqli_stmt_execute($db_list_process);
+    mysqli_stmt_bind_result($db_list_process, $car);
+    mysqli_stmt_fetch($db_list_process);
+    mysqli_stmt_close($db_list_process);
+    mysqli_close($db);
 
-    $db_list_process = $db->prepare($queryCar);
-    $db_list_process->bindValue(':editCarID', $editCarID);
-    $db_list_process->execute();
-    $car = $db_list_process->fetch();
-    $db_list_process->closeCursor();
 }
 
 ?>
