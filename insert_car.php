@@ -12,7 +12,7 @@ Tested:     10/11/20
 ******************************************************************************/
 
 // Delete Record On Form Submit
-if ( isset($_POST['add']) ) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Get the car form data
     $posted_car_make = filter_input(INPUT_POST, 'car_Make');
@@ -72,3 +72,9 @@ function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
 }
 
 ?>
+
+    <span><?php echo("Var Test: " . $posted_car_make);?></span><br>
+    <span><?php echo("Var Test: " . $posted_car_model);?></span><br>
+    <span><?php echo("Var Test: " . $posted_car_color);?></span><br>
+    <span><?php echo("Var Test: " . $posted_car_year);?></span><br>
+    <span><?php echo("Var Test: " . $posted_car_price);?></span><br>
