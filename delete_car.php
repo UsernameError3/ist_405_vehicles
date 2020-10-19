@@ -33,7 +33,7 @@ function deleteCar($car_id) {
     } else {
         include('db_conn.php');
 
-        $queryDeleteCar = 'DELETE * FROM cars
+        $queryDeleteCar = 'DELETE FROM cars
                            WHERE car_id = :car_id';
 
         $db_delete_process = $db->prepare($queryDeleteCar);
