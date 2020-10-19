@@ -21,8 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $posted_car_year = filter_input(INPUT_POST, 'car_Year', FILTER_VALIDATE_INT);
     $posted_car_price = filter_input(INPUT_POST, 'car_Price', FILTER_VALIDATE_FLOAT);
 
+    $test = 'Before function is executed.';
     addCar($posted_car_make, $posted_car_model, $posted_car_color, $posted_car_year, $posted_car_price);
-    
+    $test = 'After function is executed.';
 }
 
 function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
