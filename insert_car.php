@@ -1,5 +1,4 @@
 <?php
-include('db_conn.php');
 
 /*****************************************************************************
 Title:  	Arrays and Custom Functions
@@ -40,7 +39,7 @@ function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
             include('db_error.php');
         
     } else {
-
+        include('db_conn.php');
 
         // $db_add_process->exec('INSERT INTO cars(car_make, car_model, car_color, car_year, car_price) VALUES (?, ?, ?, ?, ?)');
         // $db_add_process->bindParam(1, $car_make);
