@@ -11,14 +11,21 @@ Developed:  10/11/20
 Tested:     10/11/20
 ******************************************************************************/
 
-function addCar() {
+// Delete Record On Form Submit
+if ( isset($_POST['add']) ) {
 
     // Get the car form data
-    $car_make = filter_input(INPUT_POST, 'car_Make');
-    $car_model = filter_input(INPUT_POST, 'car_Model');
-    $car_color = filter_input(INPUT_POST, 'car_Color');
-    $car_year = filter_input(INPUT_POST, 'car_Year', FILTER_VALIDATE_INT);
-    $car_price = filter_input(INPUT_POST, 'car_Price', FILTER_VALIDATE_FLOAT);
+    $posted_car_make = filter_input(INPUT_POST, 'car_Make');
+    $posted_car_model = filter_input(INPUT_POST, 'car_Model');
+    $posted_car_color = filter_input(INPUT_POST, 'car_Color');
+    $posted_car_year = filter_input(INPUT_POST, 'car_Year', FILTER_VALIDATE_INT);
+    $posted_car_price = filter_input(INPUT_POST, 'car_Price', FILTER_VALIDATE_FLOAT);
+
+    addCar($posted_car_make, $posted_car_model, $posted_car_color, $posted_car_year, $posted_car_price);
+    header('Location: index.php');
+}
+
+function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
 
     // Validate inputs
     if ($car_make == null || $car_make == false || 
@@ -61,8 +68,6 @@ function addCar() {
 
     }
 
-    ob_start();
-    header('Location: index.php');
 }
 
 ?>
@@ -92,7 +97,7 @@ function addCar() {
             <label>Price:</label><br>
             <input type="text" name="car_Price"><br>
             <label> </label><br>
-            <input type="submit" name="add" action="addCar()" value="Add Car"><br>
+            <input type="submit" name="add" value="Add Car"><br>
         </form>
         <!-- Add Car -->
         <p><a href="index.php">Return to Main Page</a></p>
