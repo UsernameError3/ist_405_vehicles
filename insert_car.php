@@ -73,8 +73,22 @@ function addCar($car_make, $car_model, $car_color, $car_year, $car_price) {
 
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>Car Manager</title>
+</head>
+
+<body>
     <span><?php echo("Var Test: " . $posted_car_make);?></span><br>
     <span><?php echo("Var Test: " . $posted_car_model);?></span><br>
     <span><?php echo("Var Test: " . $posted_car_color);?></span><br>
     <span><?php echo("Var Test: " . $posted_car_year);?></span><br>
     <span><?php echo("Var Test: " . $posted_car_price);?></span><br>
+</body>
+
+</html>
