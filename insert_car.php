@@ -1,5 +1,5 @@
 <?php
-require_once('db_conn.php');
+include('db_conn.php');
 
 /*****************************************************************************
 Title:  	Arrays and Custom Functions
